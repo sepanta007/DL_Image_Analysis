@@ -111,12 +111,30 @@ def plot_curves(results: dict, model_name: str) -> plt.Figure:
     # Loss
     # axes[0]: plot train_losses and val_losses
     # label axes, add legend, set title
+    axes[0].plot(epochs_range, results["train_losses"], label="Train Loss")
+    axes[0].plot(epochs_range, results["val_losses"], label="Val Loss")
+    axes[0].set_title("Loss")
+    axes[0].set_xlabel("Epoch")
+    axes[0].set_ylabel("Loss")
+    axes[0].legend()
 
     # Accuracy
     # axes[1]: plot train_accs and val_accs
+    axes[1].plot(epochs_range, results["train_accs"], label="Train Acc")
+    axes[1].plot(epochs_range, results["val_accs"], label="Val Acc")
+    axes[1].set_title("Accuracy")
+    axes[1].set_xlabel("Epoch")
+    axes[1].set_ylabel("Accuracy")
+    axes[1].legend()
 
     # AUC
     # axes[2]: plot train_aucs and val_aucs
+    axes[2].plot(epochs_range, results["train_aucs"], label="Train AUC")
+    axes[2].plot(epochs_range, results["val_aucs"], label="Val AUC")
+    axes[2].set_title("ROC-AUC")
+    axes[2].set_xlabel("Epoch")
+    axes[2].set_ylabel("AUC")
+    axes[2].legend()
 
     fig.suptitle(f"{model_name} — Training curves", fontsize=14, fontweight="bold")
     fig.tight_layout()
